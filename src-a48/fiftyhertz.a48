@@ -1,0 +1,180 @@
+; hello demonstration for the G7000 by Soeren Gust
+; Version 1.2
+
+; $Id: hello.a48,v 1.5 2003/07/19 12:55:13 sgust Exp $
+
+; History:
+; Version 1.2
+;   Removed unnecessary call vdcenable at beginning.
+;
+; Version 1.1
+;   more symbolic names from g7000.h
+;
+; Version 1.0
+;   first release
+;
+; This program simply prints "HELLO WORLD" on the screen
+
+; Copyright (C) 1997-1999 by Soeren Gust, sgust@ithh.informationstheater.de
+
+; This program is free software; you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation; either version 2 of the License, or
+; (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program; if not, write to the Free Software
+; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+; You can always get the latest version at http://soeren.informationstheater.de
+
+	cpu	8048
+
+	org	400h
+	
+	include	"g7000.h"
+
+	jmp	selectgame	; RESET
+	jmp	irq		; interrupt
+	jmp	timer		; timer
+	jmp	vsyncirq	; VSYNC-interrupt
+	jmp	start		; after selectgame
+	jmp	soundirq	; sound-interrupt
+
+timer	retr			; we don't need timer
+
+start
+	; wait for end of keyclick
+	mov	r0,#03fh
+	mov	a,@r0
+	jb6	start
+
+	call	gfxoff
+	mov	r0,#vdc_char0
+	mov	r3,#20h		; x-position
+	mov	r4,#20h		; y-position
+	mov	r2,#0bh		; length
+	mov	r1,#hellostr & 0ffh	; the string to print, must be in the same page
+loop	mov	a,r1		; get pointer
+	movp	a,@a		; get char
+	mov	r5,a		; into the right register
+	inc	r1		; advance pointer
+	mov	r6,#col_chr_white
+	call	printchar	; print it
+	djnz	r2,loop		; do it again
+
+	call	gfxon		; lets see what is written
+	dis	i		; interrupts and time-critical
+	dis	tcnti		; code don't work together
+	mov	r3,#000h
+;stop	jmp	stop		; Thats all
+
+	;in	a,P1		; [2] get port 1
+	;anl	a,#0fch		; [2] mask out bankswitch
+	;orl	a,r3		; [1] set bank
+	;outl	P1,a		; [2] do it
+	call	extramenable
+	call	waitvsync
+	call	gfxoff
+
+	mov	r3,#000h
+	mov	r2,#00fh
+	call	waitvsync
+
+	mov	a,#01h
+	call	serial_send;
+	mov	r0,#00h		; ram pointer
+	call	receive96	; get byte and store in extram (for now)
+
+	mov	r0,#00h		; ram address 00
+	movx	a,@R0
+	rl	a
+	rl	a
+	rl	a
+	;mov	a,r4		; [1] get background color
+	;add	a,#8		; [2] next color
+	;anl	a,#038h		; [2] mask out relevant bits
+	mov	r1,#vdc_color	; [2] color register
+	orl	P1,#0bch	; [2] switch..
+	anl	P1,#0b7h	; [2] ..to vdc
+	movx	@r1,a		; [2] set new background color
+	orl	P1,#0bch	; [2] switch..
+	anl	P1,#0afh	; [2] ..to extram
+theend	jmp theend
+	
+; 9600 in PAL: (2.5us per cycle)
+; 1 bit = 104.2 usec = 42 clocks
+; 1.5 bits = 156.3 usec = 63 clocks
+serial_send
+	mov	r0,#08h	; eight bits
+send_startbit
+	anl	P1,#0fdh	; output 0
+	mov	r1,#11h		; [2] cycles to wait (x2)
+wait_start
+	djnz	r1,wait_start	; [2*17] decrement jump not zero
+nextbit
+	mov	r1,#0fh		; [2] cycles to wait (x2)
+	jb0	send_1		; [2] jump carry
+send_0
+	anl	P1,#0fdh	; [2] output 0
+	jmp	wait96		; [2]
+send_1
+	orl	P1,#002h	; output 1
+	nop			; [1]
+	nop			; [1]
+wait96
+	djnz	r1,wait96	; [2*15]
+	rr	a		; [1]
+	;nop			; [1]
+	djnz	r0,nextbit	; [2]
+	mov	r1,#14h		; [2]
+	orl	P1,#02h		; [2] output 1
+send_end
+	djnz	r1,send_end	; [2*20]
+	ret
+
+; receive 1 byte from T0 (async, 9600 bps)
+; 9600 in NTSC: (2.8us per cycle)
+; 1 bit = 104.2 usec = 37 clocks
+; 1.5 bits = 156.3 usec = 56 clocks
+; alters a, r6, r7
+
+receive96 section receive96pal
+	in	a,P1
+	mov	r4,a
+	mov	r0,#00h
+receive96p
+	movx	a,@r0
+	jz	receive96p	; wait for start
+
+	mov	r3,#08h
+	; wait a while
+	
+	movx	a,@r0		;read
+	movx	@r0,a		;store
+	inc	r0
+	djnz	r3
+	
+	mov	a,r4
+	out	P1,a
+	ret			; [2] byte finished
+
+	endsection receive96pal
+
+	align	256		; start new page
+
+
+fiftyherz
+	call	waitvsync
+	in	a,P1		; [2] get port 1
+	xrl	a,#010h
+	outl	P1,a		; [2] do it
+	jmp	fiftyherz	; Thats all
+
+	
+hellostr	db	1dh, 12h, 0eh, 0eh, 17h, 0ch, 11h, 17h, 13h, 0eh, 1ah
