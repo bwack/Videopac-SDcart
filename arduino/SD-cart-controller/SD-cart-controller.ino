@@ -7,7 +7,7 @@
 
 #define LEDPIN 2
 
-#define SDCART_CMD_IS_SD_CART_INSERTED    34
+#define SDCART_CMD_IS_SD_CART_INSERTED    1
 #define SDCART_CMD_SEND_DIRECTORY_LISTING 2
 #define SDCART_CMD_LOAD_ROM 3
 
@@ -104,8 +104,8 @@ void setup() {
   
   pinMode(rxPin, INPUT);
   pinMode(txPin, OUTPUT);
-  //softserial.begin(9600);
-
+  softserial.begin(9600);
+  
   Serial.begin(19200);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
@@ -126,19 +126,24 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  //Serial.println("/");
+  PORTD&=0B0011111;
   if (softserial.available()) {
     // receive command
     char command = softserial.read();
+    //Serial.write(command);
     if (command==SDCART_CMD_IS_SD_CART_INSERTED) {
-      send_is_sd_card_inserted();
+      //send_is_sd_card_inserted();
+      PORTC=1;
     }
     else if (command==SDCART_CMD_SEND_DIRECTORY_LISTING) {
       //send_dir_listing();
+      PORTC=2;
     }
     else if (command==SDCART_CMD_LOAD_ROM) {
-      while( !softserial.available() );
-      char filenumber = softserial.read();
+      //while( !softserial.available() );
+      //char filenumber = softserial.read();
+    PORTC=4;
       //send_rom_file(filenumber);
       //hang_around_for_next_reset();
     }

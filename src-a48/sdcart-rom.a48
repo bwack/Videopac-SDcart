@@ -86,11 +86,22 @@ loop	mov	a,r1		; get pointer
 	mov	r2,#00fh
 	call	waitvsync
 
-	mov	a,#01h
-	call	serial_send;
-	mov	r0,#00h		; ram pointer
-	call	receive96	; get byte and store in extram (for now)
+	;mov	a,#01h
+	;call	serial_send;
+	;mov	r0,#00h		; ram pointer
+	;call	receive96	; get byte and store in extram (for now)
 
+	mov	r2,#05h
+	mov	r3,#50h
+waitsync
+	djnz	r3,waitsync
+	;call	waitvsync
+	mov	a,r2;
+	call	serial_send
+	mov	r3,#50h
+	djnz	r2,waitsync
+nomoar	jmp	nomoar
+	
 	mov	r0,#00h		; ram address 00
 	movx	a,@R0
 	rl	a
@@ -106,7 +117,8 @@ loop	mov	a,r1		; get pointer
 	orl	P1,#0bch	; [2] switch..
 	anl	P1,#0afh	; [2] ..to extram
 theend	jmp theend
-	
+hellostr	db	1dh, 12h, 0eh, 0eh, 17h, 0ch, 11h, 17h, 13h, 0eh, 1ah
+
 ; 9600 in PAL: (2.5us per cycle)
 ; 1 bit = 104.2 usec = 42 clocks
 ; 1.5 bits = 156.3 usec = 63 clocks
@@ -158,10 +170,10 @@ receive96p
 	movx	a,@r0		;read
 	movx	@r0,a		;store
 	inc	r0
-	djnz	r3
+	djnz	r3,receive96
 	
 	mov	a,r4
-	out	P1,a
+	;out	P1,a
 	ret			; [2] byte finished
 
 	endsection receive96pal
@@ -177,4 +189,3 @@ fiftyherz
 	jmp	fiftyherz	; Thats all
 
 	
-hellostr	db	1dh, 12h, 0eh, 0eh, 17h, 0ch, 11h, 17h, 13h, 0eh, 1ah

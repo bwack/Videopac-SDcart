@@ -1,0 +1,7 @@
+(fp_lib_table
+  (lib (name armory)(type Legacy)(uri D:/Documents/KiCad-Projects/UserLibraries/usbarmory/armory.mod)(options "")(descr ""))
+  (lib (name connectors)(type Legacy)(uri D:/Documents/KiCad-Projects/UserLibraries/usbarmory/connectors.mod)(options "")(descr ""))
+  (lib (name inversepath)(type Legacy)(uri D:/Documents/KiCad-Projects/UserLibraries/usbarmory/inversepath.mod)(options "")(descr ""))
+  (lib (name sg-bga-6220)(type Legacy)(uri D:/Documents/KiCad-Projects/UserLibraries/usbarmory/sg-bga-6220.mod)(options "")(descr ""))
+  (lib (name smd)(type Legacy)(uri D:/Documents/KiCad-Projects/UserLibraries/usbarmory/smd.mod)(options "")(descr ""))
+)
