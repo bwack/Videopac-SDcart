@@ -3,10 +3,9 @@
 #include <SoftwareSerial.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include "transfer.h"
 
 #define LEDPIN 2
-
-unsigned char sendbuffer[256];
 
 #define SDCART_CMD_IS_SD_CART_INSERTED    34
 #define SDCART_CMD_SEND_DIRECTORY_LISTING 2
@@ -20,7 +19,8 @@ Sd2Card card;
 SdVolume vol;
 SdFile root;
 
-volatile int timeroverflow=0;
+volatile char timeroverflow=0;
+byte* sendbuff;
 
 ISR(TIMER1_COMPA_vect)
 {
@@ -55,7 +55,7 @@ byte is_sd_card_inserted(void) {
 }
 
 void send_is_sd_card_inserted(void) {
-  sendbuffer[0]= is_sd_card_inserted();
+  sendbuff[0]= is_sd_card_inserted();
   sendstream(1);
 }
 
@@ -88,8 +88,10 @@ void printDirectory(File dir, int numTabs) {
 void setup() {
   // put your setup code here, to run once:
 
+  sendbuff = transfer_init(&timeroverflow);
+
   pinMode(LEDPIN, OUTPUT);
-  
+
   cli();
   TCCR1A = 0;        // set entire TCCR1A register to 0
   TCCR1B = 0;
@@ -144,27 +146,6 @@ void loop() {
   }
 }
 
-void sendstream(unsigned char length) {
-  while(timeroverflow==0);
-  timeroverflow=0;
-  while(timeroverflow==0);
-  timeroverflow=0;
-  PORTC = 0x00;
-  PORTD &= 0B00111111;
-  for (unsigned char i=0; i<length; i++) {
-    while(timeroverflow==0);
-    timeroverflow=0;
-    PORTC = sendbuffer[i];
-    PORTD &= 0B00111111;
-    PORTD |= sendbuffer[i] & 0B11000000;
-  }
-  while(timeroverflow==0);
-  timeroverflow=0;
-  PORTC = 0xFF;
-  PORTD |= 0B11000000;
-  while(timeroverflow==0);
-  timeroverflow=0;
-} 
 
 // old stuff stored for later.
 
