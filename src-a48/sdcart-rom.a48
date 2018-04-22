@@ -1,37 +1,11 @@
-; hello demonstration for the G7000 by Soeren Gust
-; Version 1.2
+;sdcart-rom.a48
+; by Bwack 2018
+; based on Sören Gust's RAM cart design from late 1990s early 2000.
 
-; $Id: hello.a48,v 1.5 2003/07/19 12:55:13 sgust Exp $
-
-; History:
-; Version 1.2
-;   Removed unnecessary call vdcenable at beginning.
-;
-; Version 1.1
-;   more symbolic names from g7000.h
-;
-; Version 1.0
-;   first release
-;
-; This program simply prints "HELLO WORLD" on the screen
-
-; Copyright (C) 1997-1999 by Soeren Gust, sgust@ithh.informationstheater.de
-
-; This program is free software; you can redistribute it and/or modify
-; it under the terms of the GNU General Public License as published by
-; the Free Software Foundation; either version 2 of the License, or
-; (at your option) any later version.
-;
-; This program is distributed in the hope that it will be useful,
-; but WITHOUT ANY WARRANTY; without even the implied warranty of
-; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-; GNU General Public License for more details.
-;
-; You should have received a copy of the GNU General Public License
-; along with this program; if not, write to the Free Software
-; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-
-; You can always get the latest version at http://soeren.informationstheater.de
+; cart commands from the videpac to the arduino
+cmd_inserted	equ	1
+cmd_dirlist	equ	2
+cmd_loadrom	equ	3
 
 	cpu	8048
 
@@ -53,22 +27,30 @@ start
 	mov	r0,#03fh
 	mov	a,@r0
 	jb6	start
-
-	call	gfxoff
+	
+	;call	extramenable
+	;call	gfxoff
+	mov	r0,#80h
+	mov	r1,#hellostr & 0ffh
+	mov	r2,#03h ;11 long
+movetxt
+	mov	a,r1
+	movp	a,@a		; read char from program rom
+	movx	@r0,a		; store char to ram
+	inc	r0		; next char
+	inc	r1		;
+	djnz	r2,movetxt	; repeat 11 times
+	mov	r4,#10h		; y-position
 	mov	r0,#vdc_char0
-	mov	r3,#20h		; x-position
+	call	drawtext
 	mov	r4,#20h		; y-position
-	mov	r2,#0bh		; length
-	mov	r1,#hellostr & 0ffh	; the string to print, must be in the same page
-loop	mov	a,r1		; get pointer
-	movp	a,@a		; get char
-	mov	r5,a		; into the right register
-	inc	r1		; advance pointer
-	mov	r6,#col_chr_white
-	call	printchar	; print it
-	djnz	r2,loop		; do it again
+	mov	r0,#vdc_char1
+	call	drawtext
+	mov	r4,#30h		; y-position
+	mov	r0,#vdc_char2
+	call	drawtext
 
-	call	gfxon		; lets see what is written
+	
 	dis	i		; interrupts and time-critical
 	dis	tcnti		; code don't work together
 	mov	r3,#000h
@@ -91,16 +73,30 @@ loop	mov	a,r1		; get pointer
 	;mov	r0,#00h		; ram pointer
 	;call	receive96	; get byte and store in extram (for now)
 
-	mov	r2,#05h
-	mov	r3,#50h
-waitsync
-	djnz	r3,waitsync
-	;call	waitvsync
-	mov	a,r2;
+; Send testing
+;	mov	r2,#05h
+;	mov	r3,#50h
+;waitsync
+;	djnz	r3,waitsync
+;	;call	waitvsync
+;	mov	a,r2;
+;	call	serial_send
+;	mov	r3,#50h
+;	djnz	r2,waitsync
+;nomoar	jmp	nomoar
+
+; send command and receive testing
+; - send "is card inserted" command and change color on the screen
+	call	waitvsync
+testreceive
+	mov	a,#cmd_inserted
 	call	serial_send
-	mov	r3,#50h
-	djnz	r2,waitsync
-nomoar	jmp	nomoar
+	
+	; receive96 currently only returns one single byte in ACC
+	mov	r3,#0b
+	call	receive96
+	call	drawtext
+
 	
 	mov	r0,#00h		; ram address 00
 	movx	a,@R0
@@ -117,11 +113,32 @@ nomoar	jmp	nomoar
 	orl	P1,#0bch	; [2] switch..
 	anl	P1,#0afh	; [2] ..to extram
 theend	jmp theend
+
+drawtext
+	call	gfxoff
+
+	mov	r3,#10h		; x-position
+	mov	r2,#0fh		; length
+	;mov	r1,#hellostr & 0ffh	; the string to print, must be in the same page
+	mov	r1,#80h
+loop	;mov	a,r1		; get pointer
+	;movp	a,@a		; get char
+	movx	a,@r1
+	mov	r5,a		; into the right register
+	inc	r1		; advance pointer
+	mov	r6,#col_chr_white
+	call	printchar	; print it
+	djnz	r2,loop		; do it again
+	call	gfxon		; lets see what is written
+	retr
+
+	
 hellostr	db	1dh, 12h, 0eh, 0eh, 17h, 0ch, 11h, 17h, 13h, 0eh, 1ah
 
 ; 9600 in PAL: (2.5us per cycle)
 ; 1 bit = 104.2 usec = 42 clocks
 ; 1.5 bits = 156.3 usec = 63 clocks
+
 serial_send
 	mov	r0,#08h	; eight bits
 send_startbit
@@ -154,7 +171,8 @@ send_end
 ; 9600 in NTSC: (2.8us per cycle)
 ; 1 bit = 104.2 usec = 37 clocks
 ; 1.5 bits = 156.3 usec = 56 clocks
-; alters a, r6, r7
+; PARAMS: r3:length
+; RETURN: ACC (last byte in stream, for now)
 
 receive96 section receive96pal
 	in	a,P1
@@ -164,7 +182,6 @@ receive96p
 	movx	a,@r0
 	jz	receive96p	; wait for start
 
-	mov	r3,#08h
 	; wait a while
 	
 	movx	a,@r0		;read
@@ -173,7 +190,7 @@ receive96p
 	djnz	r3,receive96
 	
 	mov	a,r4
-	;out	P1,a
+	outl	P1,a
 	ret			; [2] byte finished
 
 	endsection receive96pal
@@ -181,11 +198,11 @@ receive96p
 	align	256		; start new page
 
 
-fiftyherz
-	call	waitvsync
-	in	a,P1		; [2] get port 1
-	xrl	a,#010h
-	outl	P1,a		; [2] do it
-	jmp	fiftyherz	; Thats all
+;fiftyherz
+;	call	waitvsync
+;	in	a,P1		; [2] get port 1
+;	xrl	a,#010h
+;	outl	P1,a		; [2] do it
+;	jmp	fiftyherz	; Thats all
 
 	
