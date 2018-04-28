@@ -11,6 +11,8 @@ byte* transfer_init(char volatile* timeroverflow_flag) {
 }
 
 void sendstream(unsigned char length) {
+  digitalWrite(8, LOW);
+  delayMicroseconds(150);
   while(*t_flag==0);
   *t_flag=0;
   while(*t_flag==0);
@@ -30,5 +32,6 @@ void sendstream(unsigned char length) {
   PORTD |= 0B11000000;
   while(*t_flag==0);
   *t_flag=0;
+  digitalWrite(8, HIGH);
 }
 #endif // TRANSFER_H

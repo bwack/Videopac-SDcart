@@ -12,7 +12,7 @@
 #define SDCART_CMD_LOAD_ROM 3
 
 const byte rxPin = 2;
-const byte txPin = 3;
+const byte txPin = 4;
 SoftwareSerial softserial(rxPin,txPin);
 
 Sd2Card card;
@@ -55,8 +55,19 @@ byte is_sd_card_inserted(void) {
 }
 
 void send_is_sd_card_inserted(void) {
-  sendbuff[0]= is_sd_card_inserted();
-  sendstream(1);
+  sendbuff[0]=is_sd_card_inserted();
+  sendbuff[1]=0;
+  sendbuff[2]=0;
+  sendbuff[3]=0;
+  sendbuff[4]=0;
+  sendbuff[5]=0;
+  sendbuff[6]=0;
+  sendbuff[7]=0;
+  sendbuff[8]=0;
+  sendbuff[9]=0;
+  sendbuff[10]=0;
+  sendbuff[11]=0;
+  sendstream(11);
 }
 
 /*
@@ -91,6 +102,8 @@ void setup() {
   sendbuff = transfer_init(&timeroverflow);
 
   pinMode(LEDPIN, OUTPUT);
+  pinMode(8, OUTPUT);
+  digitalWrite(8, HIGH);
 
   cli();
   TCCR1A = 0;        // set entire TCCR1A register to 0
@@ -122,6 +135,7 @@ void setup() {
   PORTC = 0xFF;
   DDRD  |= 0B11000000;
   PORTD |= 0B11000000;
+    digitalWrite(3, HIGH);
 }
 
 void loop() {
@@ -133,17 +147,19 @@ void loop() {
     char command = softserial.read();
     //Serial.write(command);
     if (command==SDCART_CMD_IS_SD_CART_INSERTED) {
-      //send_is_sd_card_inserted();
-      PORTC=1;
+      send_is_sd_card_inserted();
+      //delayMicroseconds(90);        // pauses for 50 microseconds
+      //for(int i=0; i<11;i++) {
+      //  sendbuff[i]=0;
+      //}
+      //sendstream(11);
     }
     else if (command==SDCART_CMD_SEND_DIRECTORY_LISTING) {
       //send_dir_listing();
-      PORTC=2;
     }
     else if (command==SDCART_CMD_LOAD_ROM) {
       //while( !softserial.available() );
       //char filenumber = softserial.read();
-    PORTC=4;
       //send_rom_file(filenumber);
       //hang_around_for_next_reset();
     }

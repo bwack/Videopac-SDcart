@@ -28,28 +28,37 @@ start
 	mov	a,@r0
 	jb6	start
 	
-	;call	extramenable
-	;call	gfxoff
+	call	extramenable
+	call	gfxoff
 	mov	r0,#80h
 	mov	r1,#hellostr & 0ffh
-	mov	r2,#03h ;11 long
+	mov	r2,#0bh ;11 long
 movetxt
-	mov	a,r1
-	movp	a,@a		; read char from program rom
-	movx	@r0,a		; store char to ram
+	;mov	a,r1
+	;movp	a,@a		; read char from program rom
+	;movx	@r0,a		; store char to vdc
+	;mov	@r0,a
 	inc	r0		; next char
 	inc	r1		;
 	djnz	r2,movetxt	; repeat 11 times
+	call	vdcenable
+display	
+	mov	r3,#10h		; x-position
 	mov	r4,#10h		; y-position
 	mov	r0,#vdc_char0
 	call	drawtext
+
+	mov	r3,#14h		; x-position
 	mov	r4,#20h		; y-position
 	mov	r0,#vdc_char1
 	call	drawtext
+repeat_text
+	
+	mov	r3,#18h		; x-position
 	mov	r4,#30h		; y-position
 	mov	r0,#vdc_char2
 	call	drawtext
-
+	call	gfxon		; lets see what is written
 	
 	dis	i		; interrupts and time-critical
 	dis	tcnti		; code don't work together
@@ -91,12 +100,15 @@ movetxt
 testreceive
 	mov	a,#cmd_inserted
 	call	serial_send
-	
-	; receive96 currently only returns one single byte in ACC
-	mov	r3,#0b
+	orl	P1,#0bch	; [2] switch..
+	anl	P1,#0afh	; [2] ..to extram
+	mov	r3,#0bh
 	call	receive96
-	call	drawtext
+	orl	P1,#0bch	; [2] switch..
+	anl	P1,#0afh	; [2] ..to extram
 
+	call	drawtext
+theend	jmp display
 	
 	mov	r0,#00h		; ram address 00
 	movx	a,@R0
@@ -112,24 +124,26 @@ testreceive
 	movx	@r1,a		; [2] set new background color
 	orl	P1,#0bch	; [2] switch..
 	anl	P1,#0afh	; [2] ..to extram
-theend	jmp theend
+
 
 drawtext
 	call	gfxoff
-
-	mov	r3,#10h		; x-position
-	mov	r2,#0fh		; length
+	orl	P1,#0bch	; [2] switch..
+	anl	P1,#0b7h	; [2] ..to vdc
+	mov	r2,#0bh		; length
 	;mov	r1,#hellostr & 0ffh	; the string to print, must be in the same page
-	mov	r1,#80h
-loop	;mov	a,r1		; get pointer
+	mov	r1,#20h
+loop	mov	a,r1		; get pointer
 	;movp	a,@a		; get char
-	movx	a,@r1
+	;movx	a,@r1
+	mov	a,@r1
 	mov	r5,a		; into the right register
 	inc	r1		; advance pointer
 	mov	r6,#col_chr_white
 	call	printchar	; print it
 	djnz	r2,loop		; do it again
-	call	gfxon		; lets see what is written
+	call	gfxon
+
 	retr
 
 	
@@ -140,6 +154,8 @@ hellostr	db	1dh, 12h, 0eh, 0eh, 17h, 0ch, 11h, 17h, 13h, 0eh, 1ah
 ; 1.5 bits = 156.3 usec = 63 clocks
 
 serial_send
+	dis	i		; interrupts and time-critical
+	dis	tcnti		; code don't work together
 	mov	r0,#08h	; eight bits
 send_startbit
 	anl	P1,#0fdh	; output 0
@@ -175,22 +191,37 @@ send_end
 ; RETURN: ACC (last byte in stream, for now)
 
 receive96 section receive96pal
-	in	a,P1
-	mov	r4,a
-	mov	r0,#00h
+	;in	a,P1
+	;mov	r4,a
+	call	extramenable
+	dis	i		; interrupts and time-critical
+	dis	tcnti		; code don't work together
+	orl	P1,#10h		; cs cartram
+	mov	r0,#20h
 receive96p
 	movx	a,@r0
-	jz	receive96p	; wait for start
+	jnz	receive96p	; wait for start
 
-	; wait a while
-	
-	movx	a,@r0		;read
-	movx	@r0,a		;store
+	; wait 1.5 cycles
+	mov	r1,#1bh
+recwait	
+	djnz	r1,recwait
+	mov	r1,#10h
+recloop
+	movx	a,@r0		; read
+	;anl	P1,#0efh	; cs extram
+	;movx	@r0,a		; store
+	;orl	P1,#10h		; cs cartram
+	mov	@r0,a		; write to internal ram
 	inc	r0
-	djnz	r3,receive96
+	nop
+	mov	r1,#10h
+recdelay
+	djnz	r1,recdelay
+	djnz	r3,recloop
 	
-	mov	a,r4
-	outl	P1,a
+	;mov	a,r4
+	;outl	P1,a
 	ret			; [2] byte finished
 
 	endsection receive96pal
