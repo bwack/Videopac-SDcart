@@ -1,0 +1,1694 @@
+EESchema Schematic File Version 2
+LIBS:74xx_new
+LIBS:74xgxx
+LIBS:74xx
+LIBS:ac-dc
+LIBS:actel
+LIBS:adc-dac
+LIBS:allegro
+LIBS:Altera
+LIBS:AMS1117-3V3
+LIBS:analog_devices
+LIBS:analog_switches
+LIBS:atmel
+LIBS:audio
+LIBS:battery_management
+LIBS:bbd
+LIBS:bosch
+LIBS:brooktre
+LIBS:cmos_ieee
+LIBS:cmos4000
+LIBS:conn
+LIBS:contrib
+LIBS:cypress
+LIBS:dc-dc
+LIBS:device
+LIBS:digital-audio
+LIBS:diode
+LIBS:display
+LIBS:dsp
+LIBS:elec-unifil
+LIBS:ESD_Protection
+LIBS:ftdi
+LIBS:gennum
+LIBS:graphic
+LIBS:graphic_symbols
+LIBS:hc11
+LIBS:infineon
+LIBS:intel
+LIBS:interface
+LIBS:intersil
+LIBS:ir
+LIBS:Lattice
+LIBS:leds
+LIBS:LEM
+LIBS:linear
+LIBS:logic_programmable
+LIBS:logo
+LIBS:maxim
+LIBS:mechanical
+LIBS:memory
+LIBS:microchip
+LIBS:microchip_dspic33dsc
+LIBS:microchip_pic10mcu
+LIBS:microchip_pic12mcu
+LIBS:microchip_pic16mcu
+LIBS:microchip_pic18mcu
+LIBS:microchip_pic24mcu
+LIBS:microchip_pic32mcu
+LIBS:microcontrollers
+LIBS:modules
+LIBS:motor_drivers
+LIBS:motorola
+LIBS:motors
+LIBS:msp430
+LIBS:nordicsemi
+LIBS:nxp
+LIBS:nxp_armmcu
+LIBS:onsemi
+LIBS:opto
+LIBS:Oscillators
+LIBS:philips
+LIBS:power
+LIBS:Power_Management
+LIBS:powerint
+LIBS:pspice
+LIBS:references
+LIBS:regul
+LIBS:relays
+LIBS:rfcom
+LIBS:RFSolutions
+LIBS:sensors
+LIBS:silabs
+LIBS:siliconi
+LIBS:stm8
+LIBS:stm32
+LIBS:supertex
+LIBS:switches
+LIBS:texas
+LIBS:transf
+LIBS:transistors
+LIBS:triac_thyristor
+LIBS:ttl_ieee
+LIBS:valves
+LIBS:video
+LIBS:wiznet
+LIBS:Worldsemi
+LIBS:Xicor
+LIBS:xilinx
+LIBS:zetex
+LIBS:Zilog
+LIBS:videopaccart-cache
+EELAYER 25 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 1
+Title "VideoPac SD Cart"
+Date "2017-12-03"
+Rev "0.1"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L videopaccart-rescue:HM62256BLP-7-RESCUE-videopaccart U6
+U 1 1 594AB40C
+P 3500 4450
+F 0 "U6" H 3200 5350 50  0000 C CNN
+F 1 "HM62256BLP-7" H 3900 3650 50  0000 C CNN
+F 2 "SMD_Packages:SOIC-28" H 3500 4450 50  0001 C CIN
+F 3 "" H 3500 4450 50  0001 C CNN
+	1    3500 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:Videopac_Cart_Edge_Conn-RESCUE-videopaccart J1
+U 1 1 59B86CB1
+P 2850 7200
+F 0 "J1" H 3150 6600 60  0000 C CNN
+F 1 "Videopac_Cart_Edge_Conn" H 2850 8600 60  0000 C CNN
+F 2 "Videopac:videopac-edgecon" H 2850 7200 60  0001 C CNN
+F 3 "" H 2850 7200 60  0001 C CNN
+	1    2850 7200
+	1    0    0    -1  
+$EndComp
+Text GLabel 15450 6550 2    49   Input ~ 0
+SCK
+Text GLabel 15450 6350 2    49   Input ~ 0
+MOSI
+Text GLabel 15450 6450 2    49   Input ~ 0
+MISO
+$Comp
+L videopaccart-rescue:AVR-ISP-6-RESCUE-videopaccart CON1
+U 1 1 5A245C8B
+P 13850 5500
+F 0 "CON1" H 13745 5740 50  0000 C CNN
+F 1 "AVR-ISP-6" H 13585 5270 50  0000 L BNN
+F 2 "Pin_Headers:Pin_Header_Angled_2x03_Pitch2.54mm" V 13330 5540 50  0001 C CNN
+F 3 "" H 13825 5500 50  0001 C CNN
+	1    13850 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:R-RESCUE-videopaccart R2
+U 1 1 5A245E46
+P 14650 6550
+F 0 "R2" V 14600 6300 50  0000 C CNN
+F 1 "R" V 14650 6550 50  0000 C CNN
+F 2 "smd:SM0603" V 14580 6550 50  0001 C CNN
+F 3 "" H 14650 6550 50  0001 C CNN
+	1    14650 6550
+	0    1    1    0   
+$EndComp
+$Comp
+L videopaccart-rescue:R-RESCUE-videopaccart R3
+U 1 1 5A245FC3
+P 14650 6350
+F 0 "R3" V 14600 6100 50  0000 C CNN
+F 1 "R" V 14650 6350 50  0000 C CNN
+F 2 "smd:SM0603" V 14580 6350 50  0001 C CNN
+F 3 "" H 14650 6350 50  0001 C CNN
+	1    14650 6350
+	0    1    1    0   
+$EndComp
+$Comp
+L videopaccart-rescue:R-RESCUE-videopaccart R4
+U 1 1 5A245FF4
+P 14650 6450
+F 0 "R4" V 14600 6200 50  0000 C CNN
+F 1 "R" V 14650 6450 50  0000 C CNN
+F 2 "smd:SM0603" V 14580 6450 50  0001 C CNN
+F 3 "" H 14650 6450 50  0001 C CNN
+	1    14650 6450
+	0    1    1    0   
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR27
+U 1 1 5A2466D2
+P 14050 5850
+F 0 "#PWR27" H 14050 5600 50  0001 C CNN
+F 1 "GND" H 14050 5700 50  0000 C CNN
+F 2 "" H 14050 5850 50  0001 C CNN
+F 3 "" H 14050 5850 50  0001 C CNN
+	1    14050 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR26
+U 1 1 5A246FC2
+P 13950 5200
+F 0 "#PWR26" H 13950 5050 50  0001 C CNN
+F 1 "VCC" H 13950 5350 50  0000 C CNN
+F 2 "" H 13950 5200 50  0001 C CNN
+F 3 "" H 13950 5200 50  0001 C CNN
+	1    13950 5200
+	1    0    0    -1  
+$EndComp
+Text Label 15450 7850 2    49   ~ 0
+D0
+Text Label 15450 7950 2    49   ~ 0
+D1
+Text Label 15450 8050 2    49   ~ 0
+D2
+Text Label 15450 8150 2    49   ~ 0
+D3
+Text Label 15450 8250 2    49   ~ 0
+D4
+Text Label 15450 8350 2    49   ~ 0
+D5
+Text Label 15450 8450 2    49   ~ 0
+D6
+Text Label 15450 8550 2    49   ~ 0
+D7
+Text Label 4150 3700 2    49   ~ 0
+D0
+Text Label 4150 3800 2    49   ~ 0
+D1
+Text Label 4150 3900 2    49   ~ 0
+D2
+Text Label 4150 4000 2    49   ~ 0
+D3
+Text Label 4150 4100 2    49   ~ 0
+D4
+Text Label 4150 4200 2    49   ~ 0
+D5
+Text Label 4150 4300 2    49   ~ 0
+D6
+Text Label 4150 4400 2    49   ~ 0
+D7
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR30
+U 1 1 5A25F12B
+P 14100 3100
+F 0 "#PWR30" H 14100 2850 50  0001 C CNN
+F 1 "GND" H 14100 2950 50  0000 C CNN
+F 2 "" H 14100 3100 50  0001 C CNN
+F 3 "" H 14100 3100 50  0001 C CNN
+	1    14100 3100
+	0    1    1    0   
+$EndComp
+$Comp
+L videopaccart-rescue:+3.3V-RESCUE-videopaccart #PWR29
+U 1 1 5A260DF6
+P 14100 2900
+F 0 "#PWR29" H 14100 2750 50  0001 C CNN
+F 1 "+3.3V" H 14100 3040 50  0000 C CNN
+F 2 "" H 14100 2900 50  0001 C CNN
+F 3 "" H 14100 2900 50  0001 C CNN
+	1    14100 2900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR23
+U 1 1 5A273435
+P 13200 1500
+F 0 "#PWR23" H 13200 1250 50  0001 C CNN
+F 1 "GND" H 13200 1350 50  0001 C CNN
+F 2 "" H 13200 1500 50  0001 C CNN
+F 3 "" H 13200 1500 50  0001 C CNN
+	1    13200 1500
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:+3.3V-RESCUE-videopaccart #PWR25
+U 1 1 5A273C90
+P 13800 1100
+F 0 "#PWR25" H 13800 950 50  0001 C CNN
+F 1 "+3.3V" H 13800 1240 50  0000 C CNN
+F 2 "" H 13800 1100 50  0001 C CNN
+F 3 "" H 13800 1100 50  0001 C CNN
+	1    13800 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR21
+U 1 1 5A274DA2
+P 12600 1100
+F 0 "#PWR21" H 12600 950 50  0001 C CNN
+F 1 "VCC" H 12600 1250 50  0000 C CNN
+F 2 "" H 12600 1100 50  0001 C CNN
+F 3 "" H 12600 1100 50  0001 C CNN
+	1    12600 1100
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:C-RESCUE-videopaccart C1
+U 1 1 5A275294
+P 12700 1400
+F 0 "C1" H 12725 1500 50  0000 L CNN
+F 1 "C" H 12725 1300 50  0000 L CNN
+F 2 "smd:SM0603" H 12738 1250 50  0001 C CNN
+F 3 "" H 12700 1400 50  0001 C CNN
+	1    12700 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:C-RESCUE-videopaccart C2
+U 1 1 5A275334
+P 13650 1400
+F 0 "C2" H 13675 1500 50  0000 L CNN
+F 1 "C" H 13675 1300 50  0000 L CNN
+F 2 "smd:SM0603" H 13688 1250 50  0001 C CNN
+F 3 "" H 13650 1400 50  0001 C CNN
+	1    13650 1400
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR22
+U 1 1 5A27539A
+P 12700 1550
+F 0 "#PWR22" H 12700 1300 50  0001 C CNN
+F 1 "GND" H 12700 1400 50  0001 C CNN
+F 2 "" H 12700 1550 50  0001 C CNN
+F 3 "" H 12700 1550 50  0001 C CNN
+	1    12700 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR24
+U 1 1 5A2753DB
+P 13650 1550
+F 0 "#PWR24" H 13650 1300 50  0001 C CNN
+F 1 "GND" H 13650 1400 50  0001 C CNN
+F 2 "" H 13650 1550 50  0001 C CNN
+F 3 "" H 13650 1550 50  0001 C CNN
+	1    13650 1550
+	1    0    0    -1  
+$EndComp
+Text Label 2050 6000 0    60   ~ 0
+A0
+Text Label 2050 6100 0    60   ~ 0
+A1
+Text Label 2050 6200 0    60   ~ 0
+A2
+Text Label 2050 6300 0    60   ~ 0
+A3
+Text Label 2050 6400 0    60   ~ 0
+A4
+Text Label 2050 6500 0    60   ~ 0
+A5
+Text Label 2050 6600 0    60   ~ 0
+A6
+Text Label 2050 6700 0    60   ~ 0
+A7
+Text Label 2050 6800 0    60   ~ 0
+A8
+Text Label 2050 6900 0    60   ~ 0
+A9
+Text Label 2050 7000 0    60   ~ 0
+A10
+Text Label 2050 7100 0    60   ~ 0
+A11
+Text Label 2050 7200 0    60   ~ 0
+A12
+Text Label 1900 7300 0    60   ~ 0
+A13_TXD
+Text Label 2750 3700 0    60   ~ 0
+A0
+Text Label 2750 3800 0    60   ~ 0
+A1
+Text Label 2750 3900 0    60   ~ 0
+A2
+Text Label 2750 4000 0    60   ~ 0
+A3
+Text Label 2750 4100 0    60   ~ 0
+A4
+Text Label 2750 4200 0    60   ~ 0
+A5
+Text Label 2750 4300 0    60   ~ 0
+A6
+Text Label 2750 4400 0    60   ~ 0
+A7
+Text Label 2750 4500 0    60   ~ 0
+A8
+Text Label 2750 4600 0    60   ~ 0
+A9
+Text Label 2750 4700 0    60   ~ 0
+A10
+Text Label 2750 4800 0    60   ~ 0
+A11
+Text Label 2750 4900 0    60   ~ 0
+A12
+Text Label 2750 5000 0    60   ~ 0
+A13
+Text Label 3450 6000 0    60   ~ 0
+D0
+Text Label 3450 6100 0    60   ~ 0
+D1
+Text Label 3450 6200 0    60   ~ 0
+D2
+Text Label 3450 6300 0    60   ~ 0
+D3
+Text Label 3450 6400 0    60   ~ 0
+D4
+Text Label 3450 6500 0    60   ~ 0
+D5
+Text Label 3450 6600 0    60   ~ 0
+D6
+Text Label 3450 6700 0    60   ~ 0
+D7
+Text Label 2650 900  0    60   ~ 0
+A0
+Text Label 2650 1000 0    60   ~ 0
+A1
+Text Label 2650 1100 0    60   ~ 0
+A2
+Text Label 2650 1200 0    60   ~ 0
+A3
+Text Label 2650 1300 0    60   ~ 0
+A4
+Text Label 2650 1400 0    60   ~ 0
+A5
+Text Label 2650 1500 0    60   ~ 0
+A6
+Text Label 2650 1600 0    60   ~ 0
+A7
+Text Label 2650 1700 0    60   ~ 0
+A8
+Text Label 2650 1800 0    60   ~ 0
+A9
+Text Label 2650 1900 0    60   ~ 0
+A10
+Text Label 2650 2000 0    60   ~ 0
+A11
+Text Label 2650 2100 0    60   ~ 0
+A12
+$Comp
+L videopaccart-rescue:27128-RESCUE-videopaccart U3
+U 1 1 5A2D5AD9
+P 3500 1800
+F 0 "U3" H 3250 2800 50  0000 C CNN
+F 1 "27128" H 3800 800 50  0000 C CNN
+F 2 "Housings_DIP:DIP-28_W15.24mm_Socket_LongPads" H 3500 1800 50  0001 C CNN
+F 3 "" H 3500 1800 50  0001 C CNN
+	1    3500 1800
+	1    0    0    -1  
+$EndComp
+Text Label 2650 2200 0    60   ~ 0
+A13
+Text Label 4250 900  0    60   ~ 0
+D0
+Text Label 4250 1000 0    60   ~ 0
+D1
+Text Label 4250 1100 0    60   ~ 0
+D2
+Text Label 4250 1200 0    60   ~ 0
+D3
+Text Label 4250 1300 0    60   ~ 0
+D4
+Text Label 4250 1400 0    60   ~ 0
+D5
+Text Label 4250 1500 0    60   ~ 0
+D6
+Text Label 4250 1600 0    60   ~ 0
+D7
+$Comp
+L videopaccart-rescue:MICRO_SD_HINGE-RESCUE-videopaccart J2
+U 1 1 5A4828E2
+P 14900 3000
+F 0 "J2" H 14950 3050 60  0000 C CNN
+F 1 "MICRO_SD_HINGE" H 14900 3550 60  0000 C CNN
+F 2 "armory:MICRO_SD_HINGE_AMP" V 15010 2500 60  0001 C CNN
+F 3 "" V 15010 2500 60  0000 C CNN
+	1    14900 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:AP111733-RESCUE-videopaccart U1
+U 1 1 5A485792
+P 13200 1200
+F 0 "U1" H 13300 950 50  0000 C CNN
+F 1 "AP111733" H 13200 1450 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-223" H 13200 850 50  0001 C CNN
+F 3 "" H 13300 950 50  0001 C CNN
+	1    13200 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR5
+U 1 1 5A49F9C8
+P 2250 10950
+F 0 "#PWR5" H 2250 10700 50  0001 C CNN
+F 1 "GND" H 2250 10800 50  0001 C CNN
+F 2 "" H 2250 10950 50  0001 C CNN
+F 3 "" H 2250 10950 50  0001 C CNN
+	1    2250 10950
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS125-RESCUE-videopaccart U8
+U 5 1 5A4ABCD9
+P 15000 1200
+F 0 "U8" H 15000 1250 50  0000 C CNN
+F 1 "74LS125" H 15000 1150 50  0000 C CNN
+F 2 "Housings_SSOP:SSOP-14_5.3x6.2mm_Pitch0.65mm" H 15000 1200 50  0001 C CNN
+F 3 "" H 15000 1200 50  0001 C CNN
+	5    15000 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS125-RESCUE-videopaccart U8
+U 1 1 5A4ABD90
+P 13200 2900
+F 0 "U8" H 13200 2950 50  0000 C CNN
+F 1 "74LS125" H 13200 2850 50  0000 C CNN
+F 2 "Housings_SSOP:SSOP-14_5.3x6.2mm_Pitch0.65mm" H 13200 2900 50  0001 C CNN
+F 3 "" H 13200 2900 50  0001 C CNN
+	1    13200 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS125-RESCUE-videopaccart U8
+U 2 1 5A4ABDFD
+P 13200 3350
+F 0 "U8" H 13200 3400 50  0000 C CNN
+F 1 "74LS125" H 13200 3300 50  0000 C CNN
+F 2 "Housings_SSOP:SSOP-14_5.3x6.2mm_Pitch0.65mm" H 13200 3350 50  0001 C CNN
+F 3 "" H 13200 3350 50  0001 C CNN
+	2    13200 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS125-RESCUE-videopaccart U8
+U 3 1 5A4ABE90
+P 13200 2450
+F 0 "U8" H 13200 2500 50  0000 C CNN
+F 1 "74LS125" H 13200 2400 50  0000 C CNN
+F 2 "Housings_SSOP:SSOP-14_5.3x6.2mm_Pitch0.65mm" H 13200 2450 50  0001 C CNN
+F 3 "" H 13200 2450 50  0001 C CNN
+	3    13200 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS125-RESCUE-videopaccart U8
+U 4 1 5A4ABEED
+P 13200 3800
+F 0 "U8" H 13200 3850 50  0000 C CNN
+F 1 "74LS125" H 13200 3750 50  0000 C CNN
+F 2 "Housings_SSOP:SSOP-14_5.3x6.2mm_Pitch0.65mm" H 13200 3800 50  0001 C CNN
+F 3 "" H 13200 3800 50  0001 C CNN
+	4    13200 3800
+	-1   0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR37
+U 1 1 5A4BA4C4
+P 15150 3800
+F 0 "#PWR37" H 15150 3550 50  0001 C CNN
+F 1 "GND" H 15150 3650 50  0000 C CNN
+F 2 "" H 15150 3800 50  0001 C CNN
+F 3 "" H 15150 3800 50  0001 C CNN
+	1    15150 3800
+	1    0    0    -1  
+$EndComp
+Text Label 13600 2700 0    49   ~ 0
+CS33
+Text Label 13600 2800 0    49   ~ 0
+MOSI33
+Text Label 13600 3000 0    49   ~ 0
+SCK33
+Text Label 13600 3200 0    49   ~ 0
+MISO33
+Text GLabel 15450 6250 2    49   Input ~ 0
+#SS
+Text GLabel 12550 4050 0    49   Input ~ 0
+#SS
+Text GLabel 12550 3800 0    49   Input ~ 0
+MISO
+Text GLabel 12550 3350 0    49   Input ~ 0
+SCK
+Text GLabel 12550 2900 0    49   Input ~ 0
+MOSI
+Text GLabel 12550 2450 0    49   Input ~ 0
+CS
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR34
+U 1 1 5A4D86E7
+P 14600 9050
+F 0 "#PWR34" H 14600 8800 50  0001 C CNN
+F 1 "GND" H 14600 8900 50  0000 C CNN
+F 2 "" H 14600 9050 50  0001 C CNN
+F 3 "" H 14600 9050 50  0001 C CNN
+	1    14600 9050
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR33
+U 1 1 5A4D8740
+P 14600 7800
+F 0 "#PWR33" H 14600 7650 50  0001 C CNN
+F 1 "VCC" H 14600 7950 50  0000 C CNN
+F 2 "" H 14600 7800 50  0001 C CNN
+F 3 "" H 14600 7800 50  0001 C CNN
+	1    14600 7800
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:ATMEGA328P-AU-RESCUE-videopaccart U4
+U 1 1 5A48353F
+P 12050 7150
+F 0 "U4" H 11300 8400 50  0000 L BNN
+F 1 "ATMEGA328P-AU" H 12450 5750 50  0000 L BNN
+F 2 "Housings_QFP:LQFP-32_7x7mm_Pitch0.8mm" H 12050 7150 50  0001 C CIN
+F 3 "" H 12050 7150 50  0001 C CNN
+	1    12050 7150
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR20
+U 1 1 5A4D8E9C
+P 11150 8450
+F 0 "#PWR20" H 11150 8200 50  0001 C CNN
+F 1 "GND" H 11150 8300 50  0000 C CNN
+F 2 "" H 11150 8450 50  0001 C CNN
+F 3 "" H 11150 8450 50  0001 C CNN
+	1    11150 8450
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR19
+U 1 1 5A4D9232
+P 11150 5900
+F 0 "#PWR19" H 11150 5750 50  0001 C CNN
+F 1 "VCC" H 11150 6050 50  0000 C CNN
+F 2 "" H 11150 5900 50  0001 C CNN
+F 3 "" H 11150 5900 50  0001 C CNN
+	1    11150 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR36
+U 1 1 5A4D9455
+P 15000 1650
+F 0 "#PWR36" H 15000 1400 50  0001 C CNN
+F 1 "GND" H 15000 1500 50  0000 C CNN
+F 2 "" H 15000 1650 50  0001 C CNN
+F 3 "" H 15000 1650 50  0001 C CNN
+	1    15000 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:+3.3V-RESCUE-videopaccart #PWR35
+U 1 1 5A4DA1F7
+P 15000 750
+F 0 "#PWR35" H 15000 600 50  0001 C CNN
+F 1 "+3.3V" H 15000 890 50  0000 C CNN
+F 2 "" H 15000 750 50  0001 C CNN
+F 3 "" H 15000 750 50  0001 C CNN
+	1    15000 750 
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U2
+U 1 1 5A526C1C
+P 7100 6650
+F 0 "U2" H 7100 6700 50  0000 C CNN
+F 1 "74LS02" H 7100 6600 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 7100 6650 50  0001 C CNN
+F 3 "" H 7100 6650 50  0001 C CNN
+	1    7100 6650
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U7
+U 2 1 5A526D79
+P 7100 7200
+F 0 "U7" H 7100 7250 50  0000 C CNN
+F 1 "74LS02" H 7100 7150 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 7100 7200 50  0001 C CNN
+F 3 "" H 7100 7200 50  0001 C CNN
+	2    7100 7200
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U2
+U 3 1 5A526DF4
+P 8050 6950
+F 0 "U2" H 8050 7000 50  0000 C CNN
+F 1 "74LS02" H 8050 6900 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 8050 6950 50  0001 C CNN
+F 3 "" H 8050 6950 50  0001 C CNN
+	3    8050 6950
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U2
+U 4 1 5A526E7B
+P 6100 7100
+F 0 "U2" H 6100 7150 50  0000 C CNN
+F 1 "74LS02" H 6100 7050 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 6100 7100 50  0001 C CNN
+F 3 "" H 6100 7100 50  0001 C CNN
+	4    6100 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U7
+U 1 1 5A52BAFF
+P 8050 5950
+F 0 "U7" H 8050 6000 50  0000 C CNN
+F 1 "74LS02" H 8050 5900 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 8050 5950 50  0001 C CNN
+F 3 "" H 8050 5950 50  0001 C CNN
+	1    8050 5950
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U2
+U 2 1 5A52BBC0
+P 4700 7350
+F 0 "U2" H 4700 7400 50  0000 C CNN
+F 1 "74LS02" H 4700 7300 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 4700 7350 50  0001 C CNN
+F 3 "" H 4700 7350 50  0001 C CNN
+	2    4700 7350
+	1    0    0    -1  
+$EndComp
+Text Label 5150 6550 0    60   ~ 0
+MENU
+Text Label 8600 6950 0    60   ~ 0
+#RAM_CS
+Text Label 8600 5950 0    60   ~ 0
+#ROM_OE
+Text Label 5150 6750 0    60   ~ 0
+#PSEN
+Text GLabel 12500 5700 0    60   Output ~ 0
+MENU
+Text Label 2400 2600 0    60   ~ 0
+#PSEN
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U2
+U 5 1 5A558258
+P 2250 10500
+F 0 "U2" H 2250 10550 50  0000 C CNN
+F 1 "74LS02" H 2250 10450 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2250 10500 50  0001 C CNN
+F 3 "" H 2250 10500 50  0001 C CNN
+	5    2250 10500
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U7
+U 5 1 5A558315
+P 3000 10500
+F 0 "U7" H 3000 10550 50  0000 C CNN
+F 1 "74LS02" H 3000 10450 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 3000 10500 50  0001 C CNN
+F 3 "" H 3000 10500 50  0001 C CNN
+	5    3000 10500
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR8
+U 1 1 5A5597EE
+P 3000 10950
+F 0 "#PWR8" H 3000 10700 50  0001 C CNN
+F 1 "GND" H 3000 10800 50  0001 C CNN
+F 2 "" H 3000 10950 50  0001 C CNN
+F 3 "" H 3000 10950 50  0001 C CNN
+	1    3000 10950
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR4
+U 1 1 5A55AC91
+P 2250 9600
+F 0 "#PWR4" H 2250 9450 50  0001 C CNN
+F 1 "VCC" H 2250 9750 50  0000 C CNN
+F 2 "" H 2250 9600 50  0001 C CNN
+F 3 "" H 2250 9600 50  0001 C CNN
+	1    2250 9600
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR7
+U 1 1 5A55BE14
+P 3000 9600
+F 0 "#PWR7" H 3000 9450 50  0001 C CNN
+F 1 "VCC" H 3000 9750 50  0000 C CNN
+F 2 "" H 3000 9600 50  0001 C CNN
+F 3 "" H 3000 9600 50  0001 C CNN
+	1    3000 9600
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:C-RESCUE-videopaccart C3
+U 1 1 5A55C046
+P 2000 9850
+F 0 "C3" H 2025 9950 50  0000 L CNN
+F 1 "C" H 2025 9750 50  0000 L CNN
+F 2 "smd:SM0603" H 2038 9700 50  0001 C CNN
+F 3 "" H 2000 9850 50  0001 C CNN
+	1    2000 9850
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR2
+U 1 1 5A55C27B
+P 2000 10000
+F 0 "#PWR2" H 2000 9750 50  0001 C CNN
+F 1 "GND" H 2000 9850 50  0001 C CNN
+F 2 "" H 2000 10000 50  0001 C CNN
+F 3 "" H 2000 10000 50  0001 C CNN
+	1    2000 10000
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:C-RESCUE-videopaccart C4
+U 1 1 5A55C2F2
+P 2750 9850
+F 0 "C4" H 2775 9950 50  0000 L CNN
+F 1 "C" H 2775 9750 50  0000 L CNN
+F 2 "smd:SM0603" H 2788 9700 50  0001 C CNN
+F 3 "" H 2750 9850 50  0001 C CNN
+	1    2750 9850
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR6
+U 1 1 5A55C4B6
+P 2750 10000
+F 0 "#PWR6" H 2750 9750 50  0001 C CNN
+F 1 "GND" H 2750 9850 50  0001 C CNN
+F 2 "" H 2750 10000 50  0001 C CNN
+F 3 "" H 2750 10000 50  0001 C CNN
+	1    2750 10000
+	1    0    0    -1  
+$EndComp
+Text Label 4150 3250 0    60   ~ 0
+#ROM_OE
+Text Label 4450 4550 0    60   ~ 0
+#RAM_CS
+Text Label 3500 7050 0    60   ~ 0
+RD
+Text Label 5400 7350 0    60   ~ 0
+#RD
+Text GLabel 12500 5500 0    60   Output ~ 0
+T0
+Text Label 3500 7300 0    60   ~ 0
+T0
+Text GLabel 12500 5350 0    60   Input ~ 0
+RXD
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR3
+U 1 1 5A71800F
+P 2200 7800
+F 0 "#PWR3" H 2200 7550 50  0001 C CNN
+F 1 "GND" H 2200 7650 50  0001 C CNN
+F 2 "" H 2200 7800 50  0001 C CNN
+F 3 "" H 2200 7800 50  0001 C CNN
+	1    2200 7800
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR12
+U 1 1 5A719006
+P 3500 5350
+F 0 "#PWR12" H 3500 5100 50  0001 C CNN
+F 1 "GND" H 3500 5200 50  0001 C CNN
+F 2 "" H 3500 5350 50  0001 C CNN
+F 3 "" H 3500 5350 50  0001 C CNN
+	1    3500 5350
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR10
+U 1 1 5A71B526
+P 3500 2950
+F 0 "#PWR10" H 3500 2700 50  0001 C CNN
+F 1 "GND" H 3500 2800 50  0001 C CNN
+F 2 "" H 3500 2950 50  0001 C CNN
+F 3 "" H 3500 2950 50  0001 C CNN
+	1    3500 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR11
+U 1 1 5A71FFA6
+P 3500 3450
+F 0 "#PWR11" H 3500 3300 50  0001 C CNN
+F 1 "VCC" H 3500 3600 50  0000 C CNN
+F 2 "" H 3500 3450 50  0001 C CNN
+F 3 "" H 3500 3450 50  0001 C CNN
+	1    3500 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:C-RESCUE-videopaccart C6
+U 1 1 5A721377
+P 3800 3450
+F 0 "C6" H 3825 3550 50  0000 L CNN
+F 1 "C" H 3825 3350 50  0000 L CNN
+F 2 "smd:SM0603" H 3838 3300 50  0001 C CNN
+F 3 "" H 3800 3450 50  0001 C CNN
+	1    3800 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR16
+U 1 1 5A721FAC
+P 4050 3450
+F 0 "#PWR16" H 4050 3200 50  0001 C CNN
+F 1 "GND" H 4050 3300 50  0001 C CNN
+F 2 "" H 4050 3450 50  0001 C CNN
+F 3 "" H 4050 3450 50  0001 C CNN
+	1    4050 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L videopaccart-rescue:C-RESCUE-videopaccart C5
+U 1 1 5A7229E7
+P 3800 700
+F 0 "C5" H 3825 800 50  0000 L CNN
+F 1 "C" H 3825 600 50  0000 L CNN
+F 2 "smd:SM0603" H 3838 550 50  0001 C CNN
+F 3 "" H 3800 700 50  0001 C CNN
+	1    3800 700 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR9
+U 1 1 5A722AB3
+P 3500 650
+F 0 "#PWR9" H 3500 500 50  0001 C CNN
+F 1 "VCC" H 3500 800 50  0000 C CNN
+F 2 "" H 3500 650 50  0001 C CNN
+F 3 "" H 3500 650 50  0001 C CNN
+	1    3500 650 
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR15
+U 1 1 5A722F08
+P 4050 700
+F 0 "#PWR15" H 4050 450 50  0001 C CNN
+F 1 "GND" H 4050 550 50  0001 C CNN
+F 2 "" H 4050 700 50  0001 C CNN
+F 3 "" H 4050 700 50  0001 C CNN
+	1    4050 700 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L videopaccart-rescue:R-RESCUE-videopaccart R1
+U 1 1 5A727433
+P 4000 7800
+F 0 "R1" V 3900 7800 50  0000 C CNN
+F 1 "R" V 4000 7800 50  0000 C CNN
+F 2 "smd:SM0603" V 3930 7800 50  0001 C CNN
+F 3 "" H 4000 7800 50  0001 C CNN
+	1    4000 7800
+	-1   0    0    1   
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR14
+U 1 1 5A72826C
+P 4000 7450
+F 0 "#PWR14" H 4000 7300 50  0001 C CNN
+F 1 "VCC" H 4000 7600 50  0000 C CNN
+F 2 "" H 4000 7450 50  0001 C CNN
+F 3 "" H 4000 7450 50  0001 C CNN
+	1    4000 7450
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U7
+U 3 1 5A73DB39
+P 4400 10250
+F 0 "U7" H 4400 10300 50  0000 C CNN
+F 1 "74LS02" H 4400 10200 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 4400 10250 50  0001 C CNN
+F 3 "" H 4400 10250 50  0001 C CNN
+	3    4400 10250
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:74LS02-RESCUE-videopaccart U7
+U 4 1 5A73DC1F
+P 4450 10750
+F 0 "U7" H 4450 10800 50  0000 C CNN
+F 1 "74LS02" H 4450 10700 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 4450 10750 50  0001 C CNN
+F 3 "" H 4450 10750 50  0001 C CNN
+	4    4450 10750
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR13
+U 1 1 5A73E385
+P 3900 11050
+F 0 "#PWR13" H 3900 10800 50  0001 C CNN
+F 1 "GND" H 3900 10900 50  0001 C CNN
+F 2 "" H 3900 11050 50  0001 C CNN
+F 3 "" H 3900 11050 50  0001 C CNN
+	1    3900 11050
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR1
+U 1 1 5A82F954
+P 1400 7450
+F 0 "#PWR1" H 1400 7300 50  0001 C CNN
+F 1 "VCC" H 1400 7600 50  0000 C CNN
+F 2 "" H 1400 7450 50  0001 C CNN
+F 3 "" H 1400 7450 50  0001 C CNN
+	1    1400 7450
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LS245 U9
+U 1 1 5A85FF59
+P 14600 8350
+F 0 "U9" H 14700 8925 50  0000 L BNN
+F 1 "74LS245" H 14650 7775 50  0000 L TNN
+F 2 "Housings_DIP:DIP-20_W7.62mm_LongPads" H 14600 8350 50  0001 C CNN
+F 3 "" H 14600 8350 50  0001 C CNN
+	1    14600 8350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13050 7850 13650 7850
+Wire Wire Line
+	13050 7950 13600 7950
+Wire Wire Line
+	13050 8050 13550 8050
+Wire Wire Line
+	13050 8150 13500 8150
+Wire Wire Line
+	13050 8250 13450 8250
+Wire Wire Line
+	13050 8350 13400 8350
+Wire Wire Line
+	14800 6450 15450 6450
+Wire Wire Line
+	14800 6350 15450 6350
+Wire Wire Line
+	14800 6550 15450 6550
+Wire Wire Line
+	14050 5600 14050 5850
+Wire Wire Line
+	13950 5600 14050 5600
+Wire Wire Line
+	13950 5400 13950 5200
+Wire Wire Line
+	15050 7850 15600 7850
+Wire Wire Line
+	15050 7950 15600 7950
+Wire Wire Line
+	15050 8050 15600 8050
+Wire Wire Line
+	15050 8150 15600 8150
+Wire Wire Line
+	15050 8250 15600 8250
+Wire Wire Line
+	15050 8350 15600 8350
+Wire Wire Line
+	15050 8450 15600 8450
+Wire Wire Line
+	15050 8550 15600 8550
+Wire Wire Line
+	3400 6000 3700 6000
+Wire Wire Line
+	3400 6100 3700 6100
+Wire Wire Line
+	3400 6200 3700 6200
+Wire Wire Line
+	3400 6300 3700 6300
+Wire Wire Line
+	3400 6400 3700 6400
+Wire Wire Line
+	3400 6500 3700 6500
+Wire Wire Line
+	3400 6600 3700 6600
+Wire Wire Line
+	3400 6700 3700 6700
+Wire Wire Line
+	4000 3700 4300 3700
+Wire Wire Line
+	4000 3800 4300 3800
+Wire Wire Line
+	4000 3900 4300 3900
+Wire Wire Line
+	4000 4000 4300 4000
+Wire Wire Line
+	4000 4100 4300 4100
+Wire Wire Line
+	4000 4200 4300 4200
+Wire Wire Line
+	4000 4300 4300 4300
+Wire Wire Line
+	4000 4400 4300 4400
+Wire Wire Line
+	13800 1200 13800 1100
+Wire Wire Line
+	13500 1200 13800 1200
+Wire Wire Line
+	12600 1200 12900 1200
+Wire Wire Line
+	12600 1200 12600 1100
+Wire Wire Line
+	13650 1200 13650 1250
+Connection ~ 13650 1200
+Wire Wire Line
+	12700 1200 12700 1250
+Connection ~ 12700 1200
+Wire Wire Line
+	2300 6000 1900 6000
+Wire Wire Line
+	2300 6100 1900 6100
+Wire Wire Line
+	2300 6200 1900 6200
+Wire Wire Line
+	2300 6300 1900 6300
+Wire Wire Line
+	2300 6400 1900 6400
+Wire Wire Line
+	2300 6500 1900 6500
+Wire Wire Line
+	2300 6600 1900 6600
+Wire Wire Line
+	2300 6700 1900 6700
+Wire Wire Line
+	2300 6800 1900 6800
+Wire Wire Line
+	2300 6900 1900 6900
+Wire Wire Line
+	2300 7000 1900 7000
+Wire Wire Line
+	2300 7100 1900 7100
+Wire Wire Line
+	2300 7200 1900 7200
+Wire Wire Line
+	2300 7300 1900 7300
+Wire Wire Line
+	3000 3700 2600 3700
+Wire Wire Line
+	3000 3800 2600 3800
+Wire Wire Line
+	3000 3900 2600 3900
+Wire Wire Line
+	3000 4000 2600 4000
+Wire Wire Line
+	3000 4100 2600 4100
+Wire Wire Line
+	3000 4200 2600 4200
+Wire Wire Line
+	3000 4300 2600 4300
+Wire Wire Line
+	3000 4400 2600 4400
+Wire Wire Line
+	3000 4500 2600 4500
+Wire Wire Line
+	3000 4600 2600 4600
+Wire Wire Line
+	3000 4700 2600 4700
+Wire Wire Line
+	3000 4800 2600 4800
+Wire Wire Line
+	3000 4900 2600 4900
+Wire Wire Line
+	3000 5000 2600 5000
+Wire Wire Line
+	2800 900  2550 900 
+Wire Wire Line
+	2800 1000 2550 1000
+Wire Wire Line
+	2800 1100 2550 1100
+Wire Wire Line
+	2800 1200 2550 1200
+Wire Wire Line
+	2800 1300 2550 1300
+Wire Wire Line
+	2800 1400 2550 1400
+Wire Wire Line
+	2800 1500 2550 1500
+Wire Wire Line
+	2800 1600 2550 1600
+Wire Wire Line
+	2800 1700 2550 1700
+Wire Wire Line
+	2800 1800 2550 1800
+Wire Wire Line
+	2800 1900 2550 1900
+Wire Wire Line
+	2800 2000 2550 2000
+Wire Wire Line
+	2800 2100 2550 2100
+Wire Wire Line
+	2800 2200 2550 2200
+Wire Wire Line
+	4200 900  4450 900 
+Wire Wire Line
+	4200 1000 4450 1000
+Wire Wire Line
+	4200 1100 4450 1100
+Wire Wire Line
+	4200 1200 4450 1200
+Wire Wire Line
+	4200 1300 4450 1300
+Wire Wire Line
+	4200 1400 4450 1400
+Wire Wire Line
+	4200 1500 4450 1500
+Wire Wire Line
+	4200 1600 4450 1600
+Wire Wire Line
+	12750 2700 13150 2700
+Wire Wire Line
+	13150 3150 12750 3150
+Connection ~ 12750 3150
+Wire Wire Line
+	12750 3600 13150 3600
+Connection ~ 12750 3600
+Wire Wire Line
+	12550 4050 13250 4050
+Wire Wire Line
+	12750 2700 12750 4050
+Wire Wire Line
+	14100 2700 13550 2700
+Wire Wire Line
+	13550 2700 13550 2450
+Wire Wire Line
+	13550 2450 13500 2450
+Wire Wire Line
+	13550 2800 14100 2800
+Wire Wire Line
+	13550 2800 13550 2900
+Wire Wire Line
+	13550 2900 13500 2900
+Wire Wire Line
+	14100 3000 13550 3000
+Wire Wire Line
+	13550 3000 13550 3350
+Wire Wire Line
+	13550 3350 13500 3350
+Wire Wire Line
+	14100 3200 13600 3200
+Wire Wire Line
+	13600 3200 13600 3800
+Wire Wire Line
+	13600 3800 13500 3800
+Wire Wire Line
+	15150 3700 15150 3800
+Wire Wire Line
+	14850 3700 15150 3700
+Connection ~ 14950 3700
+Connection ~ 15050 3700
+Connection ~ 15150 3700
+Wire Wire Line
+	13450 5550 13450 6550
+Wire Wire Line
+	13450 5550 13600 5550
+Wire Wire Line
+	13600 5550 13600 5500
+Wire Wire Line
+	13600 5500 13700 5500
+Wire Wire Line
+	13700 5600 13600 5600
+Wire Wire Line
+	13600 5600 13600 5650
+Wire Wire Line
+	13600 5650 13350 5650
+Wire Wire Line
+	13050 6550 14500 6550
+Wire Wire Line
+	13050 6450 14500 6450
+Wire Wire Line
+	13400 6450 13400 5450
+Wire Wire Line
+	13400 5450 13600 5450
+Wire Wire Line
+	13600 5450 13600 5400
+Wire Wire Line
+	13600 5400 13700 5400
+Wire Wire Line
+	14250 5550 14050 5550
+Wire Wire Line
+	14050 5550 14050 5500
+Wire Wire Line
+	14050 5500 13950 5500
+Wire Wire Line
+	14250 5550 14250 6350
+Wire Wire Line
+	13050 6350 14500 6350
+Connection ~ 13450 6550
+Connection ~ 13400 6450
+Wire Wire Line
+	13050 6250 15450 6250
+Wire Wire Line
+	13350 5650 13350 7500
+Wire Wire Line
+	13350 7500 13050 7500
+Connection ~ 14250 6350
+Connection ~ 12750 4050
+Wire Wire Line
+	12900 3800 12550 3800
+Wire Wire Line
+	12900 3350 12550 3350
+Wire Wire Line
+	12900 2900 12550 2900
+Wire Wire Line
+	12900 2450 12550 2450
+Wire Wire Line
+	11150 8150 11150 8450
+Connection ~ 11150 8350
+Connection ~ 11150 8250
+Wire Wire Line
+	11150 5900 11150 6150
+Connection ~ 11150 6050
+Wire Wire Line
+	3400 6850 4500 6850
+Wire Wire Line
+	7650 6850 7650 6650
+Wire Wire Line
+	7650 6650 7550 6650
+Wire Wire Line
+	7650 7050 7650 7200
+Wire Wire Line
+	7650 7200 7550 7200
+Wire Wire Line
+	6550 7100 6700 7100
+Wire Wire Line
+	5700 7000 5700 7200
+Wire Wire Line
+	5700 7100 5550 7100
+Wire Wire Line
+	5550 7100 5550 6550
+Wire Wire Line
+	5150 6550 6700 6550
+Connection ~ 5700 7100
+Wire Wire Line
+	4500 6750 6700 6750
+Wire Wire Line
+	4500 6850 4500 6750
+Wire Wire Line
+	3400 7050 4300 7050
+Wire Wire Line
+	4300 5850 4300 9250
+Connection ~ 4300 7250
+Wire Wire Line
+	4300 5850 7650 5850
+Connection ~ 4300 7050
+Wire Wire Line
+	6700 7300 6500 7300
+Wire Wire Line
+	6500 7300 6500 7350
+Wire Wire Line
+	6500 7350 5150 7350
+Wire Wire Line
+	6600 7100 6600 6050
+Wire Wire Line
+	6600 6050 7650 6050
+Connection ~ 6600 7100
+Connection ~ 5550 6550
+Wire Wire Line
+	8500 5950 9150 5950
+Connection ~ 6650 7100
+Wire Wire Line
+	13050 6050 13050 5700
+Wire Wire Line
+	13050 5700 12500 5700
+Wire Wire Line
+	4000 4550 9350 4550
+Connection ~ 5250 7350
+Wire Wire Line
+	9350 4550 9350 6950
+Wire Wire Line
+	9150 5950 9150 3250
+Wire Wire Line
+	9150 3250 2800 3250
+Wire Wire Line
+	2800 3250 2800 2700
+Wire Wire Line
+	3900 6850 3900 5550
+Wire Wire Line
+	3900 5550 2200 5550
+Wire Wire Line
+	2200 5550 2200 2600
+Wire Wire Line
+	2200 2600 2800 2600
+Connection ~ 3900 6850
+Wire Wire Line
+	3000 9600 3000 10050
+Wire Wire Line
+	2250 9600 2250 10050
+Connection ~ 2250 9700
+Wire Wire Line
+	3000 9700 2750 9700
+Connection ~ 3000 9700
+Connection ~ 5650 7350
+Wire Wire Line
+	13750 6900 13750 7850
+Wire Wire Line
+	13750 7850 14150 7850
+Wire Wire Line
+	13700 7950 14150 7950
+Wire Wire Line
+	13650 8050 14150 8050
+Wire Wire Line
+	13650 7850 13650 8050
+Wire Wire Line
+	13600 7950 13600 8150
+Wire Wire Line
+	13600 8150 14150 8150
+Wire Wire Line
+	13550 8250 14150 8250
+Wire Wire Line
+	13550 8050 13550 8250
+Wire Wire Line
+	13500 8350 14150 8350
+Wire Wire Line
+	13500 8150 13500 8350
+Wire Wire Line
+	13450 8250 13450 8450
+Wire Wire Line
+	13450 8450 14150 8450
+Wire Wire Line
+	13400 8550 14150 8550
+Wire Wire Line
+	13400 8350 13400 8550
+Wire Wire Line
+	13050 6150 13150 6150
+Wire Wire Line
+	13150 6150 13150 5500
+Wire Wire Line
+	13150 5500 12500 5500
+Wire Wire Line
+	3400 7300 3800 7300
+Wire Wire Line
+	13250 5350 12500 5350
+Wire Wire Line
+	2300 7550 2200 7550
+Wire Wire Line
+	2300 7650 2200 7650
+Connection ~ 2200 7650
+Wire Wire Line
+	3500 5350 3500 5250
+Wire Wire Line
+	3500 2800 3500 2950
+Wire Wire Line
+	3500 3550 3500 3450
+Wire Wire Line
+	3500 3450 3650 3450
+Connection ~ 3500 3450
+Wire Wire Line
+	4050 3450 3950 3450
+Wire Wire Line
+	3650 700  3500 700 
+Wire Wire Line
+	3500 650  3500 800 
+Connection ~ 3500 700 
+Wire Wire Line
+	4050 700  3950 700 
+Wire Wire Line
+	3800 7300 3800 8000
+Wire Wire Line
+	3800 8000 4000 8000
+Wire Wire Line
+	4000 8000 4000 7950
+Wire Wire Line
+	4000 7650 4000 7450
+Wire Wire Line
+	13750 6900 13050 6900
+Wire Wire Line
+	13050 7650 13250 7650
+Wire Wire Line
+	13250 7650 13250 5350
+Wire Wire Line
+	13700 7950 13700 7000
+Wire Wire Line
+	13700 7000 13050 7000
+Wire Wire Line
+	3900 10150 3900 11050
+Wire Wire Line
+	3900 10850 4050 10850
+Wire Wire Line
+	3900 10650 4050 10650
+Connection ~ 3900 10850
+Wire Wire Line
+	3900 10350 4000 10350
+Connection ~ 3900 10650
+Wire Wire Line
+	3900 10150 4000 10150
+Connection ~ 3900 10350
+Wire Wire Line
+	2200 7550 2200 7800
+Wire Wire Line
+	9350 6950 8500 6950
+Wire Wire Line
+	2000 9700 2250 9700
+Wire Wire Line
+	1400 7450 2300 7450
+Wire Wire Line
+	13350 8850 14150 8850
+Wire Wire Line
+	13350 8850 13350 9350
+Wire Wire Line
+	13350 9350 8200 9350
+Wire Wire Line
+	4300 9250 7650 9250
+Connection ~ 4300 7450
+Wire Wire Line
+	3400 6950 4200 6950
+Wire Wire Line
+	4200 6950 4200 9450
+Wire Wire Line
+	4200 9450 7650 9450
+Wire Wire Line
+	4000 4650 10100 4650
+Wire Wire Line
+	10100 4650 10100 9350
+Connection ~ 10100 9350
+$Comp
+L 74LVC1G00 U5
+U 1 1 5ACF431D
+P 7950 9350
+F 0 "U5" H 7850 9500 50  0000 C CNN
+F 1 "74LVC1G00" H 7950 9200 50  0000 C CNN
+F 2 "Housings_SSOP:TSOP-5_1.65x3.05mm_Pitch0.95mm" H 7950 9350 50  0001 C CNN
+F 3 "" H 7950 9350 50  0001 C CNN
+	1    7950 9350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7650 9250 7650 9300
+Wire Wire Line
+	7650 9450 7650 9400
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR17
+U 1 1 5ACF8116
+P 7900 9000
+F 0 "#PWR17" H 7900 8850 50  0001 C CNN
+F 1 "VCC" H 7900 9150 50  0000 C CNN
+F 2 "" H 7900 9000 50  0001 C CNN
+F 3 "" H 7900 9000 50  0001 C CNN
+	1    7900 9000
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR18
+U 1 1 5ACF89AB
+P 7950 9800
+F 0 "#PWR18" H 7950 9550 50  0001 C CNN
+F 1 "GND" H 7950 9650 50  0001 C CNN
+F 2 "" H 7950 9800 50  0001 C CNN
+F 3 "" H 7950 9800 50  0001 C CNN
+	1    7950 9800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7950 9250 7950 9000
+Wire Wire Line
+	7950 9000 7900 9000
+Wire Wire Line
+	7950 9450 7950 9800
+Wire Wire Line
+	14150 8750 14150 7650
+Wire Wire Line
+	14150 7650 14600 7650
+$Comp
+L videopaccart-rescue:VCC-RESCUE-videopaccart #PWR31
+U 1 1 5ACFD1A2
+P 14150 7650
+F 0 "#PWR31" H 14150 7500 50  0001 C CNN
+F 1 "VCC" H 14150 7800 50  0000 C CNN
+F 2 "" H 14150 7650 50  0001 C CNN
+F 3 "" H 14150 7650 50  0001 C CNN
+	1    14150 7650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13050 6750 14050 6750
+Wire Wire Line
+	14050 6750 14050 7150
+Wire Wire Line
+	13050 6650 14500 6650
+Wire Wire Line
+	13050 7100 13600 7100
+Text Label 13100 7100 0    60   ~ 0
+A13_TXD
+$Comp
+L Crystal Y3
+U 1 1 5ACFC0AD
+P 14300 6850
+F 0 "Y3" H 14300 7000 50  0000 C CNN
+F 1 "Crystal" H 14300 6700 50  0001 C CNN
+F 2 "Crystals:Crystal_HC49-4H_Vertical" H 14300 6850 50  0001 C CNN
+F 3 "" H 14300 6850 50  0001 C CNN
+	1    14300 6850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	14450 6850 14500 6850
+Wire Wire Line
+	14500 6650 14500 7150
+Wire Wire Line
+	14050 6850 14150 6850
+$Comp
+L videopaccart-rescue:R-RESCUE-videopaccart R5
+U 1 1 5ACFDF85
+P 14300 7100
+F 0 "R5" V 14400 7100 50  0000 C CNN
+F 1 "1M" V 14300 7100 50  0000 C CNN
+F 2 "smd:SM0603" V 14230 7100 50  0001 C CNN
+F 3 "" H 14300 7100 50  0001 C CNN
+	1    14300 7100
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	14500 7100 14450 7100
+Connection ~ 14500 6850
+Wire Wire Line
+	14050 7100 14150 7100
+Connection ~ 14050 6850
+$Comp
+L C_Small C7
+U 1 1 5ACFE64E
+P 14050 7250
+F 0 "C7" H 14060 7320 50  0000 L CNN
+F 1 "22pF" H 14060 7170 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 14050 7250 50  0001 C CNN
+F 3 "" H 14050 7250 50  0001 C CNN
+	1    14050 7250
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C8
+U 1 1 5ACFE704
+P 14500 7250
+F 0 "C8" H 14510 7320 50  0000 L CNN
+F 1 "22pF" H 14510 7170 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 14500 7250 50  0001 C CNN
+F 3 "" H 14500 7250 50  0001 C CNN
+	1    14500 7250
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR28
+U 1 1 5ACFE7BE
+P 14050 7350
+F 0 "#PWR28" H 14050 7100 50  0001 C CNN
+F 1 "GND" H 14050 7200 50  0000 C CNN
+F 2 "" H 14050 7350 50  0001 C CNN
+F 3 "" H 14050 7350 50  0001 C CNN
+	1    14050 7350
+	1    0    0    -1  
+$EndComp
+$Comp
+L videopaccart-rescue:GND-RESCUE-videopaccart #PWR32
+U 1 1 5ACFE83B
+P 14500 7350
+F 0 "#PWR32" H 14500 7100 50  0001 C CNN
+F 1 "videopaccart-rescue:GND-RESCUE-videopaccart" H 14500 7200 50  0001 C CNN
+F 2 "" H 14500 7350 50  0001 C CNN
+F 3 "" H 14500 7350 50  0001 C CNN
+	1    14500 7350
+	1    0    0    -1  
+$EndComp
+Connection ~ 14500 7100
+Connection ~ 14050 7100
+$Comp
+L 74LVC2G157 U?
+U 1 1 5AD14E7A
+P 8050 2300
+F 0 "U?" H 7950 2550 50  0000 C CNN
+F 1 "74LVC2G157" H 8250 2050 50  0000 C CNN
+F 2 "" H 8050 2300 50  0001 C CNN
+F 3 "" H 8050 2300 50  0001 C CNN
+	1    8050 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74AUC2G00 U?
+U 1 1 5AD1526B
+P 8800 8500
+F 0 "U?" H 8700 8650 50  0000 C CNN
+F 1 "74AUC2G00" H 8800 8350 50  0000 C CNN
+F 2 "" H 8800 8500 50  0001 C CNN
+F 3 "" H 8800 8500 50  0001 C CNN
+	1    8800 8500
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
