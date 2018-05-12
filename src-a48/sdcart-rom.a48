@@ -23,21 +23,17 @@ cmd_loadrom	equ	3
 timer	retr			; we don't need timer
 
 start
+	jmp	start
 	; wait for end of keyclick
 	mov	r0,#03fh
 	mov	a,@r0
 	jb6	start
 	
-	call	extramenable
 	call	gfxoff
 	mov	r0,#80h
 	mov	r1,#hellostr & 0ffh
 	mov	r2,#0bh ;11 long
 movetxt
-	;mov	a,r1
-	;movp	a,@a		; read char from program rom
-	;movx	@r0,a		; store char to vdc
-	;mov	@r0,a
 	inc	r0		; next char
 	inc	r1		;
 	djnz	r2,movetxt	; repeat 11 times
@@ -63,7 +59,6 @@ repeat_text
 	dis	i		; interrupts and time-critical
 	dis	tcnti		; code don't work together
 	mov	r3,#000h
-;stop	jmp	stop		; Thats all
 
 	;in	a,P1		; [2] get port 1
 	;anl	a,#0fch		; [2] mask out bankswitch
@@ -76,23 +71,6 @@ repeat_text
 	mov	r3,#000h
 	mov	r2,#00fh
 	call	waitvsync
-
-	;mov	a,#01h
-	;call	serial_send;
-	;mov	r0,#00h		; ram pointer
-	;call	receive96	; get byte and store in extram (for now)
-
-; Send testing
-;	mov	r2,#05h
-;	mov	r3,#50h
-;waitsync
-;	djnz	r3,waitsync
-;	;call	waitvsync
-;	mov	a,r2;
-;	call	serial_send
-;	mov	r3,#50h
-;	djnz	r2,waitsync
-;nomoar	jmp	nomoar
 
 ; send command and receive testing
 ; - send "is card inserted" command and change color on the screen
